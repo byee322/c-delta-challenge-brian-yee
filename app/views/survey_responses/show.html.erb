@@ -1,0 +1,48 @@
+<div class="row">
+  <div class="col-md-8">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h3>
+          <%= @survey_response.display_name %>
+        </h3>
+      </div>
+
+      <div> </div>
+      <div class="panel-body">
+        Completed
+        <%= @survey_response.answers_count %>
+        of
+        <%= Question.count %>
+        questions
+      </div>
+    </div>
+
+    <hr>
+
+    <% @survey_response.answers.each do |answer| %>
+      <%= render 'questions/header', question: answer.question %>
+      <table class="table table-bordered">
+        <% answer.question.question_choices.each do |question_choice| %>
+          <tr>
+            <td>
+              <% if question_choice == answer.question_choice %>
+                <strong>
+                  <%= question_choice.text %>
+                  <% if question_choice.creative_quality%>
+                    <div class="<%= answer.question_choice.score < 0 ? 'text-danger' : 'text-success' %>">  
+                      <%= question_choice.creative_quality.name + " " + answer.question_choice.score.to_s %> 
+                    </div>
+                  <% end %>
+                </strong>
+              <% else %>
+                <span class="text-muted">
+                  <%= question_choice.text %>
+                </span>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </table>
+    <% end %>
+  </div>
+</div>
