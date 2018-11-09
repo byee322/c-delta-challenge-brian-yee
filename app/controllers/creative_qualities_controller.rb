@@ -5,14 +5,14 @@ class CreativeQualitiesController < ApplicationController
     @normalized_scores = {}
 
     @creative_qualities.each do |quality|
-    	@normalized_scores[quality.id] = 0
+    	@normalized_scores[quality.name] = 0
     end
 
     normalize_scores
-    	    
+
     respond_to do |format|
       format.html
-      format.json { render json: mock_creative_quality_scores }
+      format.json { render json: normalize_scores }
     end
   end
 end
