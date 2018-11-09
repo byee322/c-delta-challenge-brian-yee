@@ -18,7 +18,11 @@
 
               <div class="score">
                 <small>your score:</small>
-                &mdash;
+                <% if @normalized_scores[creative_quality.id] %>
+                  <%= @normalized_scores[creative_quality.id] %>
+                <% else %>
+                  &mdash
+                <% end %>
               </div class="score">
 
               <p>
