@@ -7,13 +7,26 @@
         </h3>
       </div>
 
-      <div> </div>
       <div class="panel-body">
         Completed
         <%= @survey_response.answers_count %>
         of
         <%= Question.count %>
         questions
+
+        <hr />
+
+        <div>
+          <strong>
+          <% @creative_qualities_scores.each do |name, o| %>
+            <%= name %>
+            <ul>
+              <li class="mr-3">Raw Score: <%= o[:raw_score] %></li>
+              <li class="mr-3">Max Score: <%= o[:max_score] %></li>
+            </ul>
+          <% end %>  
+          </strong>
+        </div>
       </div>
     </div>
 

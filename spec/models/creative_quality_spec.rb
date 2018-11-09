@@ -8,5 +8,7 @@ describe CreativeQuality do
   context 'validations' do
     it { is_expected.to validate_presence_of(:name) }
     it { is_expected.to validate_presence_of(:description) }
+    it { is_expected.to validate_presence_of(:max_score) }
+	it { is_expected.to validate_presence_of(:locked) }
   end
 end

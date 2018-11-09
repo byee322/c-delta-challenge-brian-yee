@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170215015037) do
+ActiveRecord::Schema.define(version: 20181109005937) do
 
   create_table "answers", force: :cascade do |t|
     t.integer "question_choice_id"
@@ -27,6 +27,8 @@ ActiveRecord::Schema.define(version: 20170215015037) do
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "max_score", default: 0
+    t.boolean "locked", default: false
   end
 
   create_table "question_choices", force: :cascade do |t|
